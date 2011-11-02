@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://ppipn.jasonmichels.com/';
+$config['base_url']	= 'http://ppipn.jasonmichels.com/ipn_pdt/';
 
 /*
 |--------------------------------------------------------------------------
