@@ -19,6 +19,7 @@ class GetTest extends CI_Controller {
 		}
 
 		print_r($data);
+		echo "<br />";
 	}
 }
 

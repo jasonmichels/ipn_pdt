@@ -7,14 +7,11 @@ class Welcome extends CI_Controller {
 		$this->load->library('curl/curl');
 
 		$result = $this->curl
-						->setUrl("http://ppipn.jasonmichels.com/ipn_pdt/index.php/gettest/")
+						->setUrl(site_url("gettest/ipntest"))
 						->setString("first=Jason&last=Michels")
 						->post();
 
-		print_r($result);
-		echo "<br />";
-
-		print_r($_SERVER['SERVER_NAME']);
+			print_r($result);
 	}
 }
 
