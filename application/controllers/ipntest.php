@@ -32,7 +32,7 @@ class IpnTest extends CI_Controller {
 		$this->email->to('michelsja@me.com');
 
 		$this->email->subject('IPN Test '.$result);
-		$this->email->message($req);	
+		$this->email->message($message);	
 
 		$this->email->send();
 	}
