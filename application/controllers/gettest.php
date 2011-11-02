@@ -30,7 +30,7 @@ class GetTest extends CI_Controller {
 
 		log_message('DEBUG', $req);
 
-		$result = $this->curl->setUrl("https://www.sandbox.paypal.com")->setString($req)->post();
+		$result = $this->curl->setUrl("https://www.sandbox.paypal.com/cgi-bin/webscr")->setString($req)->post();
 		log_message('DEBUG', $result);
 
 		if($result == "VERIFIED")
