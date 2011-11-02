@@ -1,0 +1,3 @@
+[submodule "application/libraries/curl"]
+	path = application/libraries/curl
+	url = git@github.com:thebizztech/Simple-Codeigniter-Curl-PHP-Class.git
