@@ -7,7 +7,17 @@ class GetTest extends CI_Controller {
 		$first = $this->input->post("first");
 		$last = $this->input->post("last");
 
-		echo "Your name is ".$first." ".$last;
+		$post = $this->input->post();
+		print_r($post);
+
+		//echo "Your name is ".$first." ".$last;
+	}
+
+	public function ipntest()
+	{
+		$data['cmd'] = "_notify-validate";
+
+
 	}
 }
 
