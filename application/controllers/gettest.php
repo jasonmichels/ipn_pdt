@@ -7,6 +7,12 @@ class GetTest extends CI_Controller {
 		$first = $this->input->post("first");
 		$last = $this->input->post("last");
 
+		foreach($this->input->post() as $key => $value)
+		{
+			echo "Key: ".$key."<br />";
+			echo "Value: ".$value."<br />";
+		}
+
 		$post = $this->input->post();
 		print_r($post);
 
