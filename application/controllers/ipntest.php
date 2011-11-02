@@ -1,42 +1,33 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class GetTest extends CI_Controller {
+class IpnTest extends CI_Controller {
 
 	public function index()
 	{
-		$first = $this->input->post("first");
-		$last = $this->input->post("last");
-		echo "Your name is ".$first." ".$last;
-	}
-
-	public function ipntest()
-	{
-		//http://ppipn.jasonmichels.com/ipn_pdt/index.php/gettest/ipntest/
-
-		
+		//http://ppipn.jasonmichels.com/ipn_pdt/index.php/ipntest/index/
 		$data['cmd'] = "_notify-validate";
 
 		foreach($this->input->post() as $key => $value)
 		{
 			$data[$key] = $value;
 		}
-		
-
-
-		//$req = 'cmd=_notify-validate';
-		foreach ($_POST as $key => $value) {
-			//$value = urlencode(stripslashes($value));
-			$req .= "&$key=$value";
-		}
-
 
 		$result = $this->curl
 						->setUrl("https://www.sandbox.paypal.com/cgi-bin/webscr")
 						->setArray($data)
 						->post();		
+		
+		if($result == "VERIFIED")
+		{
+			$message = "Congratulations your IPN was verified.  Your script can take the post data and save to database or write to log file.";
+		}
+		else
+		{
+			$message = "There was an issue with your IPN. Log the data to research this further.";
+		}
 
 		$this->load->library('email');
-		
+
 		$this->email->from('michelsja@me.com', 'Jason Michels');
 		$this->email->to('michelsja@me.com');
 
@@ -47,5 +38,5 @@ class GetTest extends CI_Controller {
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file ipntest.php */
+/* Location: ./application/controllers/ipntest.php */
