@@ -24,7 +24,7 @@ class GetTest extends CI_Controller {
 
 		$req = 'cmd=_notify-validate';
 		foreach ($_POST as $key => $value) {
-			$value = urlencode(stripslashes($value));
+			//$value = urlencode(stripslashes($value));
 			$req .= "&$key=$value";
 		}
 
