@@ -13,16 +13,24 @@ class GetTest extends CI_Controller {
 	{
 		//http://ppipn.jasonmichels.com/ipn_pdt/index.php/gettest/ipntest/
 
+		/*
 		$data['cmd'] = "_notify-validate";
 
 		foreach($this->input->post() as $key => $value)
 		{
 			$data[$key] = $value;
 		}
+		*/
 
-		log_message('DEBUG', serialize($data));
+		$req = 'cmd=_notify-validate';
+		foreach ($_POST as $key => $value) {
+			$value = urlencode(stripslashes($value));
+			$req .= "&$key=$value";
+		}
 
-		$result = $this->curl->setUrl("https://www.sandbox.paypal.com")->setArray($data)->post();
+		log_message('DEBUG', $req);
+
+		$result = $this->curl->setUrl("https://www.sandbox.paypal.com")->setString($req)->post();
 		log_message('DEBUG', $result);
 
 		if($result == "VERIFIED")
@@ -41,7 +49,7 @@ class GetTest extends CI_Controller {
 		$this->email->to('michelsja@me.com');
 
 		$this->email->subject('IPN Test '.$result);
-		$this->email->message(serialize($data));	
+		$this->email->message($req);	
 
 		$this->email->send();
 	}
