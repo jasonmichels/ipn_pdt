@@ -18,7 +18,15 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+ if($_SERVER['SERVER_NAME'] == "ppipn.jasonmichels.com")
+ {
+ 	define('ENVIRONMENT', 'testing');
+ }
+ else
+ {
+ 	define('ENVIRONMENT', 'development');
+ }
+	
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
