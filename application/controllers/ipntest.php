@@ -4,7 +4,6 @@ class IpnTest extends CI_Controller {
 
 	public function index()
 	{
-		//http://ppipn.jasonmichels.com/ipn_pdt/index.php/ipntest/index/
 		$data['cmd'] = "_notify-validate";
 
 		foreach($this->input->post() as $key => $value)

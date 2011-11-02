@@ -4,14 +4,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->library('curl/curl');
-
-		$result = $this->curl
-						->setUrl(site_url("gettest/ipntest"))
-						->setString("first=Jason&last=Michels")
-						->post();
-
-			print_r($result);
+		echo "Welcome";
 	}
 }
 
