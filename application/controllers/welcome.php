@@ -12,6 +12,9 @@ class Welcome extends CI_Controller {
 						->post();
 
 		print_r($result);
+		echo "<br />";
+
+		print_r($_SERVER['SERVER_NAME']);
 	}
 }
 

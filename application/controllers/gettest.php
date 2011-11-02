@@ -6,24 +6,19 @@ class GetTest extends CI_Controller {
 	{
 		$first = $this->input->post("first");
 		$last = $this->input->post("last");
-
-		foreach($this->input->post() as $key => $value)
-		{
-			echo "Key: ".$key."<br />";
-			echo "Value: ".$value."<br />";
-		}
-
-		$post = $this->input->post();
-		print_r($post);
-
-		//echo "Your name is ".$first." ".$last;
+		echo "Your name is ".$first." ".$last;
 	}
 
 	public function ipntest()
 	{
 		$data['cmd'] = "_notify-validate";
 
+		foreach($this->input->post() as $key => $value)
+		{
+			$data[$key] = $value;
+		}
 
+		print_r($data);
 	}
 }
 
