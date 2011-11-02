@@ -12,7 +12,7 @@ class GetTest extends CI_Controller {
 	public function ipntest()
 	{
 		//http://ppipn.jasonmichels.com/ipn_pdt/index.php/gettest/ipntest/
-		
+
 		$data['cmd'] = "_notify-validate";
 
 		foreach($this->input->post() as $key => $value)
@@ -22,10 +22,18 @@ class GetTest extends CI_Controller {
 
 		log_message('DEBUG', serialize($data));
 
-		$this->load->library('curl/curl');
-
 		$result = $this->curl->setUrl("https://www.sandbox.paypal.com")->setArray($data)->post();
 		log_message('DEBUG', $result);
+
+		if($result == "VERIFIED")
+		{
+			log_message('DEBUG', 'It was verified.');
+		}
+		else
+		{
+			log_message('DEBUG', 'It was not verified');
+		}
+		
 
 		$this->load->library('email');
 		
