@@ -18,7 +18,6 @@ class PdtTest extends CI_Controller {
 		else
 		{
 			echo "You were successfull with your request.<br /<br />";
-			print_r($deformat);
 
 			if($deformat['payment_status'] == "Completed")
 			{
@@ -28,6 +27,13 @@ class PdtTest extends CI_Controller {
 			{
 				echo "Payment might be echeck and still processing as it's not completed.";
 			}
+
+			echo "<ul>";
+			foreach($deformat as $key => $value)
+			{
+				echo "<li>".$key." ===> ".$value."</li>";
+			}
+			echo "</ul>";
 		}
 
 	}
