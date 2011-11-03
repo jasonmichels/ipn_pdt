@@ -18,8 +18,13 @@ class PdtTest extends CI_Controller {
 
 		$deformat = $this->deformatNVP($result);
 
-		echo "<br /><br />Here is the deformatted string.<br /<br />>";
+		echo "<br /><br />Here is the deformatted string.<br /<br />";
 		print_r($deformat);
+
+		if($result == '')
+		{
+			echo "<br /<br />There was an issue with your request.<br /<br />";
+		}
 
 	}
 
