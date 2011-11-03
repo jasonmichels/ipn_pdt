@@ -19,9 +19,6 @@ class PdtTest extends CI_Controller {
 		}
 		else
 		{
-			echo "You were successfull with your request.<br /<br />";
-			print_r($deformat);
-
 			if($deformat['payment_status'] == "Completed")
 			{
 				echo "<br /><br />Your payment status is complete.";
@@ -32,9 +29,14 @@ class PdtTest extends CI_Controller {
 			}
 		}
 
-	}
+		echo "<ul>";
+		foreach($deformat as $key => $value)
+		{
+			echo "<li>".$key." ===> ".$value."</li>";
+		}
+		echo "</ul>";
 
-	
+	}
 }
 /* End of file pdttest.php */
 /* Location: ./application/controllers/pdttest.php */
