@@ -11,10 +11,7 @@ class IpnTest extends CI_Controller {
 			$data[$key] = $value;
 		}
 
-		$result = $this->curl
-						->setUrl("https://www.sandbox.paypal.com/cgi-bin/webscr")
-						//->setArray($data)
-						->post($data);		
+		$result = $this->curl->setUrl("https://www.sandbox.paypal.com/cgi-bin/webscr")->post($data);		
 		
 		if($result == "VERIFIED")
 		{
