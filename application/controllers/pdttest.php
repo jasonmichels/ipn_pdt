@@ -5,7 +5,7 @@ class PdtTest extends CI_Controller {
 	public function index()
 	{
 		$data['cmd'] = "_notify-synch";
-		$data['tx'] = $this->input->get('tx');
+		//$data['tx'] = $this->input->get('tx');
 		$data['at'] = "anS68XjppePH1P36fFkseWh7FDDyK5iker-R50EKGjd4_ZVDqr9cPbE6fBy";
 
 		$result = $this->curl->setUrl("https://www.sandbox.paypal.com/cgi-bin/webscr")->post($data);
