@@ -10,26 +10,20 @@ class PdtTest extends CI_Controller {
 
 		$result = $this->curl->setUrl("https://www.sandbox.paypal.com/cgi-bin/webscr")->post($data);
 
-		echo "Here is the data array.<br /><br />";
-		print_r($data);
-
-		echo "<br /><br />Here is the result array.<br /><br />";
-		print_r($result);
-
-		$deformat = $this->deformatNVP($result);
-
-		echo "<br /><br />Here is the deformatted string.<br /<br />";
-		print_r($deformat);
-
-		//$pos = strpos($result, "SUCCESS");
 		if(strpos($result, "SUCCESS") === false)
 		{
-			echo "<br /<br />There was an issue with your request.<br /<br />";
+			echo "There was an issue with your request, log data and research.";
 		}
 		else
 		{
-			echo "<br /<br />You were successfull with your request.<br /<br />";
-		}
+			$deformat = $this->deformatNVP($result);
+			print_r($deformat);
+
+			if($deformat['payment_status'] == "Completed")
+			{
+				echo "<br /><br />Congratulations your payment has been completed."
+			}
+		}		
 
 	}
 
