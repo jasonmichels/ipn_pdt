@@ -19,11 +19,11 @@ class PdtTest extends CI_Controller {
 		{
 			if($deformat['payment_status'] == "Completed")
 			{
-				echo "<br /><br />Your payment status is complete.";
+				echo "Your transaction has been completed, and a receipt for your purchase has been emailed to you.<br>You may log into your account at <a href='https://www.paypal.com'>www.paypal.com</a> to view details of this transaction.";
 			}
 			else
 			{
-				echo "Payment might be echeck and still processing as it's not completed.";
+				echo "Payment might be echeck and still processing as it's not completed. I would suggest showing a thank you page but research this further.";
 			}
 		}
 
@@ -35,6 +35,8 @@ class PdtTest extends CI_Controller {
 		echo "</ul>";
 
 	}
+
+	
 
 	public function deformat($result)
 	{
