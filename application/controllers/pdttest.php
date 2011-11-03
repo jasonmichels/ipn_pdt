@@ -21,7 +21,12 @@ class PdtTest extends CI_Controller {
 		}
 		else
 		{
-			echo "<br /<br />You were successfull with your request. Here is the payment status".$deformat['payment_status']."<br /<br />";
+			echo "<br /<br />You were successfull with your request.<br /<br />";
+
+			if($deformat['payment_status'] == "Completed")
+			{
+				echo "Your payment status is complete.";
+			}
 		}
 
 	}
