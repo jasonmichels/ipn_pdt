@@ -37,6 +37,6 @@ class PdtTest extends CI_Controller {
 		}
 		return $keyarray;
 	}
-
+}
 /* End of file pdttest.php */
 /* Location: ./application/controllers/pdttest.php */
