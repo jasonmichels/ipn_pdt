@@ -11,29 +11,31 @@ class PdtTest extends CI_Controller {
 		$result = $this->curl->setUrl("https://www.sandbox.paypal.com/cgi-bin/webscr")->post($data);
 		$deformat = $this->deformatNVP($result);
 
-		echo "<br /><br />Here is the deformatted string.<br /<br />";
-		print_r($deformat);
-
-		//$pos = strpos($result, "SUCCESS");
 		if(strpos($result, "SUCCESS") === false)
 		{
-			echo "<br /<br />There was an issue with your request.<br /<br />";
+			echo "There was an issue with your request, log data and research further.";
 		}
 		else
 		{
-			echo "<br /<br />You were successfull with your request.<br /<br />";
+			echo "You were successfull with your request.<br /<br />";
+			echo "Here is the deformatted string.<br /<br />";
+			print_r($deformat);
 
 			if($deformat['payment_status'] == "Completed")
 			{
-				echo "Your payment status is complete.";
+				echo "<br /><br />Your payment status is complete.";
+			}
+			else
+			{
+				echo "Payment might be echeck and still processing as it's not completed.";
 			}
 		}
 
 	}
 
-	public function deformatNVP($res)
+	public function deformatNVP($result)
 	{
-		$lines = explode("\n", $res);
+		$lines = explode("\n", $result);
 		$keyarray = array();
 		if (strcmp ($lines[0], "SUCCESS") == 0) 
 		{
