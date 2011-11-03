@@ -5,7 +5,7 @@ class PdtTest extends CI_Controller {
 	public function index()
 	{
 		$data['cmd'] = "_notify-synch";
-		//$data['tx'] = $this->input->get('tx');
+		$data['tx'] = $this->input->get('tx');
 		$data['at'] = "anS68XjppePH1P36fFkseWh7FDDyK5iker-R50EKGjd4_ZVDqr9cPbE6fBy";
 
 		$result = $this->curl->setUrl("https://www.sandbox.paypal.com/cgi-bin/webscr")->post($data);
@@ -21,9 +21,14 @@ class PdtTest extends CI_Controller {
 		echo "<br /><br />Here is the deformatted string.<br /<br />";
 		print_r($deformat);
 
-		if($result == 'FAIL')
+		//$pos = strpos($result, "SUCCESS");
+		if(strpos($result, "SUCCESS") === false)
 		{
 			echo "<br /<br />There was an issue with your request.<br /<br />";
+		}
+		else
+		{
+			echo "<br /<br />You were successfull with your request.<br /<br />";
 		}
 
 	}
