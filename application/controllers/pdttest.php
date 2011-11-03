@@ -13,20 +13,12 @@ class PdtTest extends CI_Controller {
 
 		if($deformat === false)
 		{
-			echo "There was an issue with your request, log data and research further.";
+			echo "There was an issue with your PDT request, log data and research further.";
+			echo "Show the customer a Thank You page but manually check their transaction status.";
 		}
 		else
 		{
-			echo "You were successfull with your request.<br /<br />";
-
-			if($deformat['payment_status'] == "Completed")
-			{
-				echo "<br /><br />Your payment status is complete.";
-			}
-			else
-			{
-				echo "Payment might be echeck and still processing as it's not completed.";
-			}
+			echo "Your transaction has been completed, and a receipt for your purchase has been emailed to you.<br />You may log into your account at <a href='https://www.paypal.com'>www.paypal.com</a> to view details of this transaction.";
 
 			echo "<ul>";
 			foreach($deformat as $key => $value)
@@ -56,7 +48,6 @@ class PdtTest extends CI_Controller {
 			//Their was an issue with the request
 			return false;
 		}
-		
 	}
 }
 /* End of file pdttest.php */
