@@ -23,28 +23,20 @@ class PdtTest extends CI_Controller {
 
 	}
 
-	public function deformatNVP($nvpstr)
+	public function deformatNVP($res)
 	{
-
-		$intial=0;
-	 	$nvpArray = array();
-
-		while(strlen($nvpstr)){
-			//postion of Key
-			$keypos= strpos($nvpstr,'=');
-			//position of value
-			$valuepos = strpos($nvpstr,'&') ? strpos($nvpstr,'&'): strlen($nvpstr);
-
-			/*getting the Key and Value values and storing in a Associative Array*/
-			$keyval=substr($nvpstr,$intial,$keypos);
-			$valval=substr($nvpstr,$keypos+1,$valuepos-$keypos-1);
-			//decoding the respose
-			$nvpArray[urldecode($keyval)] =urldecode( $valval);
-			$nvpstr=substr($nvpstr,$valuepos+1,strlen($nvpstr));
-	     }
-		return $nvpArray;
+		$lines = explode("\n", $res);
+		$keyarray = array();
+		if (strcmp ($lines[0], "SUCCESS") == 0) 
+		{
+			for ($i=1; $i<count($lines);$i++)
+			{
+				list($key,$val) = explode("=", $lines[$i]);
+				$keyarray[urldecode($key)] = urldecode($val);
+			}
+		}
+		return $keyarray;
 	}
-}
 
 /* End of file pdttest.php */
 /* Location: ./application/controllers/pdttest.php */
