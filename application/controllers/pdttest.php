@@ -9,16 +9,15 @@ class PdtTest extends CI_Controller {
 		$data['at'] = "anS68XjppePH1P36fFkseWh7FDDyK5iker-R50EKGjd4_ZVDqr9cPbE6fBy";
 
 		$result = $this->curl->setUrl("https://www.sandbox.paypal.com/cgi-bin/webscr")->post($data);
-		$deformat = $this->deformatNVP($result);
+		$deformat = $this->deformatPDT($result);
 
-		if(strpos($result, "SUCCESS") === false)
+		if($deformat === false)
 		{
 			echo "There was an issue with your request, log data and research further.";
 		}
 		else
 		{
 			echo "You were successfull with your request.<br /<br />";
-			echo "Here is the deformatted string.<br /<br />";
 			print_r($deformat);
 
 			if($deformat['payment_status'] == "Completed")
@@ -33,7 +32,7 @@ class PdtTest extends CI_Controller {
 
 	}
 
-	public function deformatNVP($result)
+	public function deformatPDT($result)
 	{
 		$lines = explode("\n", $result);
 		$keyarray = array();
@@ -44,8 +43,14 @@ class PdtTest extends CI_Controller {
 				list($key,$val) = explode("=", $lines[$i]);
 				$keyarray[urldecode($key)] = urldecode($val);
 			}
+			return $keyarray;
 		}
-		return $keyarray;
+		else
+		{
+			//Their was an issue with the request
+			return false;
+		}
+		
 	}
 }
 /* End of file pdttest.php */
