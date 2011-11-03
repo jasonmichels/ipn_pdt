@@ -21,7 +21,7 @@ class PdtTest extends CI_Controller {
 		echo "<br /><br />Here is the deformatted string.<br /<br />";
 		print_r($deformat);
 
-		if($result == '')
+		if($result == 'FAIL')
 		{
 			echo "<br /<br />There was an issue with your request.<br /<br />";
 		}
