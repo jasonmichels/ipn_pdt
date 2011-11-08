@@ -357,6 +357,10 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+//My own config itesm
+$config['log_curl_request'] 	= 0;
+$config['log_curl_response'] 	= 0;
+
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
