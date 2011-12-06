@@ -24,8 +24,8 @@ class IpnTest extends CI_Controller {
 
 		$this->load->library('email');
 
-		$this->email->from('michelsja@me.com', 'Jason Michels');
-		$this->email->to('michelsja@me.com');
+		$this->email->from('thebizztech@me.com', 'Jason');
+		$this->email->to('thebizztech@me.com');
 
 		$this->email->subject('IPN Test '.$result);
 		$this->email->message($message);	
