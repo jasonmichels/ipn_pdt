@@ -19,7 +19,7 @@ class IpnTest extends CI_Controller {
 
 			foreach($data as $key => $value)
 			{
-				$message .= "Key: ".$key." Value: ".$value."\n";
+				$message .= $key." ==> ".$value."\n";
 			}
 		}
 		else
