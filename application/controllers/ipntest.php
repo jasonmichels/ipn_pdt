@@ -15,7 +15,7 @@ class IpnTest extends CI_Controller {
 		
 		if($result == "VERIFIED")
 		{
-			$message = "Congratulations your IPN was verified.  Your script can take the post data and save to database or write to log file.";
+			$message = "Congratulations your IPN was verified.  Your script can take the post data and save to database or write to log file.\n\n";
 		}
 		else
 		{
@@ -28,7 +28,7 @@ class IpnTest extends CI_Controller {
 		$this->email->to('thebizztech@me.com');
 
 		$this->email->subject('IPN Test '.$result);
-		$this->email->message($message);	
+		$this->email->message($message.$result);	
 
 		$this->email->send();
 	}
