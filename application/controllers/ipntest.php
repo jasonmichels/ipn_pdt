@@ -16,11 +16,19 @@ class IpnTest extends CI_Controller {
 		if($result == "VERIFIED")
 		{
 			$message = "Congratulations your IPN was verified.  Your script can take the post data and save to database or write to log file.\n\n";
-
+			
+			$ipn_length = 0;
 			foreach($data as $key => $value)
 			{
+				$key_length = strlen($key);
+				$ipn_length += $key_length;
+				$value_length = strlen($value);
+				$ipn_length += $value_length;
+				$ipn_length += 2;
+
 				$message .= $key." ==> ".$value."\n";
 			}
+			$message .= "Size of message is ".$ipn_length."\n";
 		}
 		else
 		{
